@@ -29,7 +29,7 @@ const footerStyle = {
   },
   footer: {
     bottom: "0",
-    borderTop: "1px solid #e7e7e7",
+    /*borderTop: "1px solid #e7e7e7",*/
     padding: "15px 0",
     ...defaultFont
   },
