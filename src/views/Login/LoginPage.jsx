@@ -164,7 +164,11 @@ class LoginPage extends React.Component {
                       </Button>
                     </CardFooter>
 
-                    {error && <p className="error-form">{error.message}</p>}
+                    {error && (
+                      <p className="text-center error-form without-line-height">
+                        {error.message}
+                      </p>
+                    )}
                   </form>
                 </Card>
               </GridItem>
