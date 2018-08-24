@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from "react"; 
+import React from "react";
 import PropTypes from "prop-types";
 import { Switch, Route, Redirect } from "react-router-dom";
 // creates a beautiful scrollbar
@@ -20,6 +20,8 @@ import image from "../../assets/img/sidebar-2.jpg";
 import logo from "../../assets/img/reactlogo.png";
 
 import "../../material-dashboard-react.css";
+
+//import withAuthentication from "../../application/withAuthentication";
 
 const switchRoutes = (
   <Switch>
@@ -106,4 +108,7 @@ App.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
+const authCondition = authUser => !!authUser;
+
 export default withStyles(dashboardStyle)(App);
+//export default withAuthentication(withStyles(dashboardStyle)(App));

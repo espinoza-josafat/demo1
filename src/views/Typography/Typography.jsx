@@ -13,6 +13,8 @@ import Card from "../../components/Card/Card.jsx";
 import CardHeader from "../../components/Card/CardHeader.jsx";
 import CardBody from "../../components/Card/CardBody.jsx";
 
+import withAuthorization from "../../application/withAuthorization";
+
 const style = {
   typo: {
     paddingLeft: "25%",
@@ -155,4 +157,8 @@ function TypographyPage(props) {
   );
 }
 
-export default withStyles(style)(TypographyPage);
+const authCondition = authUser => !!authUser;
+
+export default withAuthorization(authCondition)(
+  withStyles(style)(TypographyPage)
+);

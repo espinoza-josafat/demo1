@@ -6,6 +6,8 @@ import {
   Marker
 } from "react-google-maps";
 
+import withAuthorization from "../../application/withAuthorization";
+
 const CustomSkinMap = withScriptjs(
   withGoogleMap(props => (
     <GoogleMap
@@ -92,4 +94,6 @@ function Maps({ ...props }) {
   );
 }
 
-export default Maps;
+const authCondition = authUser => !!authUser;
+
+export default withAuthorization(authCondition)(Maps);

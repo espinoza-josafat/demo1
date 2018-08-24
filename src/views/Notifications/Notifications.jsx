@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from "react";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -13,6 +12,8 @@ import Snackbar from "../../components/Snackbar/Snackbar.jsx";
 import Card from "../../components/Card/Card.jsx";
 import CardHeader from "../../components/Card/CardHeader.jsx";
 import CardBody from "../../components/Card/CardBody.jsx";
+
+import withAuthorization from "../../application/withAuthorization";
 
 const styles = {
   cardCategoryWhite: {
@@ -297,4 +298,8 @@ class Notifications extends React.Component {
   }
 }
 
-export default withStyles(styles)(Notifications);
+const authCondition = authUser => !!authUser;
+
+export default withAuthorization(authCondition)(
+  withStyles(styles)(Notifications)
+);

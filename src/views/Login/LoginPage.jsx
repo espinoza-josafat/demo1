@@ -18,20 +18,34 @@ import CardHeader from "../../components/Card/CardHeader.jsx";
 import CardFooter from "../../components/Card/CardFooter.jsx";
 import CustomInput from "../../components/CustomInput/CustomInput.jsx";
 
+import { auth } from "../../firebase/index";
+
 import "../../material-kit-react.css";
 
 import loginPageStyle from "../../assets/jss/material-kit-react/views/loginPage.jsx";
 
 import image from "../../assets/img/bg7.jpg";
 
+const byPropKey = (proppertyName, value) => () => ({
+  [proppertyName]: value
+});
+
+const INITIAL_STATE = {
+  email: "",
+  password: "",
+  error: null
+};
+
 class LoginPage extends React.Component {
   constructor(props) {
     super(props);
     // we use this to make the card to appear after the page has been rendered
     this.state = {
-      cardAnimaton: "cardHidden"
+      cardAnimaton: "cardHidden",
+      ...INITIAL_STATE
     };
   }
+
   componentDidMount() {
     // we add a hidden class to the card and after 700 ms we delete it and the transition appears
     setTimeout(
@@ -41,8 +55,32 @@ class LoginPage extends React.Component {
       700
     );
   }
+
+  onSubmit = event => {
+    const { email, password } = this.state;
+
+    const { history } = this.props;
+
+    auth
+      .doSignInWithEmailAndPassword(email, password)
+      .then(() => {
+        this.setState({ ...INITIAL_STATE });
+        history.push("/dashboard");
+      })
+      .catch(error => {
+        this.setState(byPropKey("error", error));
+      });
+
+    event.preventDefault();
+  };
+
   render() {
+    const { email, password, error } = this.state;
+
+    const isValid = password === "" || email === "";
+
     const { classes, ...rest } = this.props;
+
     return (
       <div>
         <Header
@@ -77,6 +115,11 @@ class LoginPage extends React.Component {
                         }}
                         inputProps={{
                           type: "email",
+                          value: email,
+                          onChange: event =>
+                            this.setState(
+                              byPropKey("email", event.target.value)
+                            ),
                           endAdornment: (
                             <InputAdornment position="end">
                               <Email className={classes.inputIconsColor} />
@@ -92,6 +135,12 @@ class LoginPage extends React.Component {
                         }}
                         inputProps={{
                           type: "password",
+                          value: password,
+                          onChange: event =>
+                            this.setState(
+                              byPropKey("password", event.target.value)
+                            ),
+
                           endAdornment: (
                             <InputAdornment position="end">
                               <Icon className={classes.inputIconsColor}>
@@ -103,10 +152,19 @@ class LoginPage extends React.Component {
                       />
                     </CardBody>
                     <CardFooter className={classes.cardFooter}>
-                      <Button simple color="primary" size="lg">
+                      <Button
+                        disabled={isValid}
+                        type="submit"
+                        onClick={this.onSubmit}
+                        simple
+                        color="primary"
+                        size="lg"
+                      >
                         Listo
                       </Button>
                     </CardFooter>
+
+                    {error && <p className="error-form">{error.message}</p>}
                   </form>
                 </Card>
               </GridItem>

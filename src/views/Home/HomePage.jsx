@@ -40,6 +40,8 @@ import {
 
 import dashboardStyle from "../../assets/jss/material-dashboard-react/views/dashboardStyle.jsx";
 
+import withAuthorization from "../../application/withAuthorization";
+
 class HomePage extends React.Component {
   state = {
     value: 0
@@ -283,4 +285,8 @@ HomePage.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(dashboardStyle)(HomePage);
+const authCondition = authUser => !!authUser;
+
+export default withAuthorization(authCondition)(
+  withStyles(dashboardStyle)(HomePage)
+);

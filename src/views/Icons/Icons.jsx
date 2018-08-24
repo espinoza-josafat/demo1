@@ -12,6 +12,8 @@ import CardBody from "../../components/Card/CardBody.jsx";
 
 import iconsStyle from "../../assets/jss/material-dashboard-react/views/iconsStyle.jsx";
 
+import withAuthorization from "../../application/withAuthorization";
+
 function Icons(props) {
   const { classes } = props;
   return (
@@ -68,4 +70,6 @@ Icons.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(iconsStyle)(Icons);
+const authCondition = authUser => !!authUser;
+
+export default withAuthorization(authCondition)(withStyles(iconsStyle)(Icons));

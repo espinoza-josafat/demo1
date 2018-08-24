@@ -15,6 +15,8 @@ import CardFooter from "../../components/Card/CardFooter.jsx";
 
 import avatar from "../../assets/img/faces/marc.jpg";
 
+import withAuthorization from "../../application/withAuthorization";
+
 const styles = {
   cardCategoryWhite: {
     color: "rgba(255,255,255,.62)",
@@ -175,4 +177,8 @@ function UserProfile(props) {
   );
 }
 
-export default withStyles(styles)(UserProfile);
+const authCondition = authUser => !!authUser;
+
+export default withAuthorization(authCondition)(
+  withStyles(styles)(UserProfile)
+);

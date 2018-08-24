@@ -14,6 +14,8 @@ import Card from "../../components/Card/Card.jsx";
 import CardHeader from "../../components/Card/CardHeader.jsx";
 import CardBody from "../../components/Card/CardBody.jsx";
 
+import withAuthorization from "../../application/withAuthorization";
+
 const styles = {
   cardCategoryWhite: {
     "&,& a,& a:hover,& a:focus": {
@@ -209,4 +211,8 @@ function UpgradeToPro(props) {
   );
 }
 
-export default withStyles(styles)(UpgradeToPro);
+const authCondition = authUser => !!authUser;
+
+export default withAuthorization(authCondition)(
+  withStyles(styles)(UpgradeToPro)
+);
