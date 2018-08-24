@@ -18,13 +18,16 @@ import CardHeader from "../../components/Card/CardHeader.jsx";
 import CardFooter from "../../components/Card/CardFooter.jsx";
 import CustomInput from "../../components/CustomInput/CustomInput.jsx";
 
+import * as strings from "../../application/constants/strings.js";
+import * as routes from "../../application/constants/routes";
+
 import { auth } from "../../firebase/index";
 
 import "../../material-kit-react.css";
 
 import loginPageStyle from "../../assets/jss/material-kit-react/views/loginPage.jsx";
 
-import image from "../../assets/img/bg7.jpg";
+import image from "../../assets/img/advise-advisor.jpg";
 
 const byPropKey = (proppertyName, value) => () => ({
   [proppertyName]: value
@@ -65,7 +68,7 @@ class LoginPage extends React.Component {
       .doSignInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState({ ...INITIAL_STATE });
-        history.push("/dashboard");
+        history.push(routes.DASHBOARD);
       })
       .catch(error => {
         this.setState(byPropKey("error", error));
@@ -86,7 +89,7 @@ class LoginPage extends React.Component {
         <Header
           absolute
           color="transparent"
-          brand="Material Kit React"
+          brand={strings.PROJECT}
           rightLinks={<HeaderLinks />}
           {...rest}
         />

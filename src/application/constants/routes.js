@@ -1,0 +1,12 @@
+export const LANDING = "/";
+export const LOGIN = "/login";
+export const DASHBOARD = "/dashboard";
+export const D_HOME = "/dashboard/home";
+export const D_ICONS = "/dashboard/icons";
+export const D_MAPS = "/dashboard/maps";
+export const MAPS = "/maps";
+export const D_NOTIFICATIONS = "/dashboard/notifications";
+export const D_TABLE_LIST = "/dashboard/table";
+export const D_TYPOGRAPHY = "/dashboard/typography";
+export const D_UPGRADE_PRO = "/dashboard/upgrade-to-pro";
+export const D_USER_PROFILE = "/dashboard/user";

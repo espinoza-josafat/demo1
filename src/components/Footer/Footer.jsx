@@ -4,6 +4,9 @@ import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
+
+import * as strings from "../../application/constants/strings.js";
+
 // core components
 import footerStyle from "../../assets/jss/material-dashboard-react/components/footerStyle";
 
@@ -25,7 +28,7 @@ function Footer({ ...props }) {
           <span>
             &copy; {1900 + new Date().getYear()}{" "}
             <a href="https://www.google.com.mx" className={classes.a}>
-              Schooling
+              {strings.PROJECT}
             </a>
           </span>
         </p>

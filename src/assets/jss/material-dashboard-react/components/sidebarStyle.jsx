@@ -9,7 +9,7 @@ import {
   successColor,
   warningColor,
   dangerColor
-} from "../../../../assets/jss/material-dashboard-react.jsx";
+} from "../../material-dashboard-react.jsx";
 
 const sidebarStyle = theme => ({
   drawerPaper: {
@@ -107,8 +107,8 @@ const sidebarStyle = theme => ({
       height: "100%",
       content: '""',
       display: "block",
-      background: "#000",
-      opacity: ".8"
+      background: "#00acc1",
+      opacity: ".7"
     }
   },
   list: {

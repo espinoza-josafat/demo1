@@ -15,6 +15,8 @@ import Button from "../../components/CustomButtons/Button.jsx";
 import HeaderLinks from "../../components/Header/LandingHeaderLinks.jsx";
 import Parallax from "../../components/Parallax/Parallax.jsx";
 
+import * as strings from "../../application/constants/strings.js";
+
 import landingPageStyle from "../../assets/jss/material-kit-react/views/landingPage.jsx";
 
 // Sections for this page
@@ -34,7 +36,7 @@ class LandingPage extends React.Component {
         <Header
           color="transparent"
           routes={dashboardRoutes}
-          brand="Material Kit React"
+          brand={strings.PROJECT}
           rightLinks={<HeaderLinks />}
           fixed
           changeColorOnScroll={{

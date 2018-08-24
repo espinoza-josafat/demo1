@@ -17,58 +17,60 @@ import Maps from "../views/Maps/Maps.jsx";
 import NotificationsPage from "../views/Notifications/Notifications.jsx";
 import UpgradeToPro from "../views/UpgradeToPro/UpgradeToPro.jsx";
 
+import * as routes from "../application/constants/routes";
+
 const dashboardRoutes = [
   {
-    path: "/dashboard/home",
+    path: routes.D_HOME,
     sidebarName: "Home",
     navbarName: "Schooling",
     icon: Dashboard,
     component: HomePage
   },
   {
-    path: "/dashboard/user",
+    path: routes.D_USER_PROFILE,
     sidebarName: "User Profile",
     navbarName: "Profile",
     icon: Person,
     component: UserProfile
   },
   {
-    path: "/dashboard/table",
+    path: routes.D_TABLE_LIST,
     sidebarName: "Table List",
     navbarName: "Table List",
     icon: "content_paste",
     component: TableList
   },
   {
-    path: "/dashboard/typography",
+    path: routes.D_TYPOGRAPHY,
     sidebarName: "Typography",
     navbarName: "Typography",
     icon: LibraryBooks,
     component: Typography
   },
   {
-    path: "/dashboard/icons",
+    path: routes.D_ICONS,
     sidebarName: "Icons",
     navbarName: "Icons",
     icon: BubbleChart,
     component: Icons
   },
   {
-    path: "/dashboard/maps",
+    path: routes.D_MAPS,
     sidebarName: "Maps",
     navbarName: "Map",
     icon: LocationOn,
     component: Maps
   },
   {
-    path: "/dashboard/notifications",
+    path: routes.D_NOTIFICATIONS,
     sidebarName: "Notifications",
     navbarName: "Notifications",
     icon: Notifications,
     component: NotificationsPage
   },
   {
-    path: "/dashboard/upgrade-to-pro",
+    path: routes.D_UPGRADE_PRO,
     sidebarName: "Upgrade To PRO",
     navbarName: "Upgrade To PRO",
     icon: Unarchive,
@@ -76,8 +78,8 @@ const dashboardRoutes = [
   },
   {
     redirect: true,
-    path: "/dashboard",
-    to: "/dashboard/home",
+    path: routes.DASHBOARD,
+    to: routes.D_HOME,
     navbarName: "Redirect"
   }
 ];
