@@ -1,5 +1,7 @@
 export const LANDING = "/";
 export const LOGIN = "/login";
+export const REGISTER = "/register";
+export const PASSWORD_FORGET = "/password-forget";
 export const DASHBOARD = "/dashboard";
 export const D_HOME = "/dashboard/home";
 export const D_ICONS = "/dashboard/icons";

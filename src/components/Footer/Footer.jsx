@@ -1,40 +1,44 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
 
-import * as strings from "../../application/constants/strings.js";
+import * as strings from "../../application/constants/strings";
+import * as routes from "../../application/constants/routes";
 
 // core components
 import footerStyle from "../../assets/jss/material-dashboard-react/components/footerStyle";
 
-function Footer({ ...props }) {
-  const { classes } = props;
-  return (
-    <footer className={classes.footer}>
-      <div className={classes.container}>
-        <div className={classes.left}>
-          <List className={classes.list}>
-            <ListItem className={classes.inlineBlock}>
-              <a href="/" className={classes.block}>
-                Principal
-              </a>
-            </ListItem>
-          </List>
+class Footer extends React.Component {
+  render() {
+    const { classes } = this.props;
+    return (
+      <footer className={classes.footer}>
+        <div className={classes.container}>
+          <div className={classes.left}>
+            <List className={classes.list}>
+              <ListItem className={classes.inlineBlock}>
+                <Link to={routes.LANDING} className={classes.block}>
+                  Principal
+                </Link>
+              </ListItem>
+            </List>
+          </div>
+          <p className={classes.right}>
+            <span>
+              &copy; {1900 + new Date().getYear()}{" "}
+              <Link to="https://www.google.com.mx" className={classes.a}>
+                {strings.PROJECT}
+              </Link>
+            </span>
+          </p>
         </div>
-        <p className={classes.right}>
-          <span>
-            &copy; {1900 + new Date().getYear()}{" "}
-            <a href="https://www.google.com.mx" className={classes.a}>
-              {strings.PROJECT}
-            </a>
-          </span>
-        </p>
-      </div>
-    </footer>
-  );
+      </footer>
+    );
+  }
 }
 
 Footer.propTypes = {

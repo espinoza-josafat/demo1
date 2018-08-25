@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -172,6 +173,9 @@ class LoginPage extends React.Component {
                         {error.message}
                       </p>
                     )}
+
+                    <LoginLink />
+                    <PasswordForgetLink />
                   </form>
                 </Card>
               </GridItem>
@@ -180,6 +184,38 @@ class LoginPage extends React.Component {
           <Footer whiteFont />
         </div>
       </div>
+    );
+  }
+}
+
+class LoginLink extends React.Component {
+  render() {
+    const styleLoginLink = {
+      textAlign: "center",
+      marginBottom: "0",
+      marginTop: "10px"
+    };
+
+    return (
+      <p style={styleLoginLink}>
+        No tienes una cuenta <Link to={routes.REGISTER}>Regístrate</Link>
+      </p>
+    );
+  }
+}
+
+class PasswordForgetLink extends React.Component {
+  render() {
+    const stylePasswordForgetLink = {
+      textAlign: "center",
+      marginBottom: "20px",
+      marginTop: "0"
+    };
+
+    return (
+      <p style={stylePasswordForgetLink}>
+        <Link to={routes.PASSWORD_FORGET}>¿Olvidaste tu contraseña?</Link>
+      </p>
     );
   }
 }
