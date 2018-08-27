@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -9,13 +10,16 @@ import Paper from "@material-ui/core/Paper";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Hidden from "@material-ui/core/Hidden";
 import Poppers from "@material-ui/core/Popper";
+
 // @material-ui/icons
 import Person from "@material-ui/icons/Person";
-import Notifications from "@material-ui/icons/Notifications";
+
 // core components
 import Button from "../../components/CustomButtons/Button.jsx";
 
 import headerLinksStyle from "../../assets/jss/material-dashboard-react/components/headerLinksStyle";
+
+import { auth } from "../../firebase/index";
 
 class HeaderLinks extends React.Component {
   state = {
@@ -31,6 +35,12 @@ class HeaderLinks extends React.Component {
     }
 
     this.setState({ open: false });
+  };
+
+  cerrarSession = event => {
+    this.handleClose(event);
+
+    auth.doSignOut();
   };
 
   render() {
@@ -51,8 +61,7 @@ class HeaderLinks extends React.Component {
             onClick={this.handleToggle}
             className={classes.buttonLink}
           >
-            <Notifications className={classes.icons} />
-            <span className={classes.notifications}>5</span>
+            <Person className={classes.icons} />
             <Hidden mdUp implementation="css">
               <p onClick={this.handleClick} className={classes.linkText}>
                 Notificación
@@ -83,34 +92,10 @@ class HeaderLinks extends React.Component {
                   <ClickAwayListener onClickAway={this.handleClose}>
                     <MenuList role="menu">
                       <MenuItem
-                        onClick={this.handleClose}
+                        onClick={this.cerrarSession}
                         className={classes.dropdownItem}
                       >
-                        Mike John responded to your email
-                      </MenuItem>
-                      <MenuItem
-                        onClick={this.handleClose}
-                        className={classes.dropdownItem}
-                      >
-                        You have 5 new tasks
-                      </MenuItem>
-                      <MenuItem
-                        onClick={this.handleClose}
-                        className={classes.dropdownItem}
-                      >
-                        You're now friend with Andrew
-                      </MenuItem>
-                      <MenuItem
-                        onClick={this.handleClose}
-                        className={classes.dropdownItem}
-                      >
-                        Another Notification
-                      </MenuItem>
-                      <MenuItem
-                        onClick={this.handleClose}
-                        className={classes.dropdownItem}
-                      >
-                        Another One
+                        Cerrar sesión
                       </MenuItem>
                     </MenuList>
                   </ClickAwayListener>
@@ -119,18 +104,6 @@ class HeaderLinks extends React.Component {
             )}
           </Poppers>
         </div>
-        <Button
-          color={window.innerWidth > 959 ? "transparent" : "white"}
-          justIcon={window.innerWidth > 959}
-          simple={!(window.innerWidth > 959)}
-          aria-label="Person"
-          className={classes.buttonLink}
-        >
-          <Person className={classes.icons} />
-          <Hidden mdUp implementation="css">
-            <p className={classes.linkText}>Perfil</p>
-          </Hidden>
-        </Button>
       </div>
     );
   }

@@ -22,7 +22,12 @@ import CustomInput from "../../components/CustomInput/CustomInput.jsx";
 import * as strings from "../../application/constants/strings.js";
 import * as routes from "../../application/constants/routes";
 
+//import { history } from "history";
+
+import * as fb from "firebase";
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { auth } from "../../firebase/index";
+import * as users from "../../bussiness/users";
 
 import "../../material-kit-react.css";
 
@@ -109,6 +114,22 @@ class LoginPage extends React.Component {
                   <form className={classes.form}>
                     <CardHeader color="primary" className={classes.cardHeader}>
                       <h4>Inicia sesión</h4>
+                      <div className={classes.socialLine}>
+                        <Button
+                          justIcon
+                          color="transparent"
+                          onClick={e => e.preventDefault()}
+                        >
+                          <i className={"fab fa-facebook"} />
+                        </Button>
+                        <Button
+                          justIcon
+                          color="transparent"
+                          onClick={e => e.preventDefault()}
+                        >
+                          <i className={"fab fa-google-plus-g"} />
+                        </Button>
+                      </div>
                     </CardHeader>
                     <CardBody>
                       <CustomInput
@@ -181,6 +202,7 @@ class LoginPage extends React.Component {
               </GridItem>
             </GridContainer>
           </div>
+          <StyledFirebaseAuthForm history={this.props.history} />
           <Footer whiteFont />
         </div>
       </div>
@@ -216,6 +238,47 @@ class PasswordForgetLink extends React.Component {
       <p style={stylePasswordForgetLink}>
         <Link to={routes.PASSWORD_FORGET}>¿Olvidaste tu contraseña?</Link>
       </p>
+    );
+  }
+}
+
+class StyledFirebaseAuthForm extends React.Component {
+  uiConfig = {
+    signInFlow: "popup",
+    signInOptions: [
+      fb.auth.GoogleAuthProvider.PROVIDER_ID,
+      fb.auth.FacebookAuthProvider.PROVIDER_ID
+    ],
+    callbacks: {
+      signInSuccessWithAuthResult: (authResult, redirectUrl) => {
+        //console.log("authResult", authResult);
+
+        users
+          .doCreateUser(
+            authResult.user.uid,
+            authResult.user.displayName,
+            authResult.user.email
+          )
+          .then(() => {
+            this.onSubmit();
+          })
+          .catch(error => {
+            this.setState(byPropKey("error", error));
+          });
+
+        return false;
+      }
+    }
+  };
+
+  onSubmit = () => {
+    const { history } = this.props;
+    history.push(routes.DASHBOARD);
+  };
+
+  render() {
+    return (
+      <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={fb.auth()} />
     );
   }
 }
