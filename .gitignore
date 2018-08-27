@@ -1,0 +1,13 @@
+node_modules/
+
+.env
+
+.eslintignore
+
+.eslintrc.js
+
+package-lock.json
+
+package.json
+
+src/assets/img/.DS_Store

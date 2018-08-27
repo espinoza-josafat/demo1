@@ -108,6 +108,4 @@ App.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-const authCondition = authUser => !!authUser;
-
 export default withStyles(dashboardStyle)(App);

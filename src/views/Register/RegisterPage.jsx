@@ -11,8 +11,7 @@ import Email from "@material-ui/icons/Email";
 import Check from "@material-ui/icons/Check";
 // core components
 import Header from "../../components/Header/LandingHeader.jsx";
-import HeaderLinks from "../../components/Header/LandingHeaderLinks.jsx";
-import Footer from "../../components/Footer/Footer.jsx";
+import AnonymousHeaderLinks from "../../components/Header/AnonymousHeaderLinks";
 import GridContainer from "../../components/Grid/GridContainer.jsx";
 import GridItem from "../../components/Grid/GridItem.jsx";
 import Button from "../../components/CustomButtons/Button.jsx";
@@ -27,6 +26,8 @@ import * as routes from "../../application/constants/routes";
 
 import { auth } from "../../firebase/index";
 
+import * as users from "../../bussiness/users";
+
 import "../../material-kit-react.css";
 
 import registerPageStyle from "../../assets/jss/material-kit-react/views/registerPage";
@@ -38,8 +39,10 @@ const byPropKey = (proppertyName, value) => () => ({
 });
 
 const INITIAL_STATE = {
+  username: "",
   email: "",
-  password: "",
+  passwordOne: "",
+  passwordTwo: "",
   error: null
 };
 
@@ -47,7 +50,8 @@ class RegisterPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: []
+      checked: [],
+      ...INITIAL_STATE
     };
     this.handleToggle = this.handleToggle.bind(this);
   }
@@ -68,15 +72,21 @@ class RegisterPage extends React.Component {
   }
 
   onSubmit = event => {
-    const { email, password } = this.state;
-
+    const { username, email, passwordOne } = this.state;
     const { history } = this.props;
 
     auth
-      .doSignInWithEmailAndPassword(email, password)
-      .then(() => {
-        this.setState({ ...INITIAL_STATE });
-        history.push(routes.DASHBOARD);
+      .doCreateUserWithEmailAndPassword(email, passwordOne)
+      .then(authUser => {
+        users
+          .doCreateUser(authUser.user.uid, username, email)
+          .then(() => {
+            this.setState({ ...INITIAL_STATE });
+            history.push(routes.DASHBOARD);
+          })
+          .catch(error => {
+            this.setState(byPropKey("error", error));
+          });
       })
       .catch(error => {
         this.setState(byPropKey("error", error));
@@ -86,9 +96,14 @@ class RegisterPage extends React.Component {
   };
 
   render() {
-    const { email, password, error } = this.state;
-
-    const isValid = password === "" || email === "";
+    const { username, email, passwordOne, passwordTwo, error } = this.state;
+    
+    const isValid =
+      passwordOne !== passwordTwo ||
+      passwordOne === "" ||
+      passwordTwo === "" ||
+      email === "" ||
+      username === "";
 
     const { classes, ...rest } = this.props;
 
@@ -97,8 +112,8 @@ class RegisterPage extends React.Component {
         <Header
           absolute
           color="transparent"
-          brand={strings.PROJECT}
-          rightLinks={<HeaderLinks />}
+          brand={strings.PROJECT_MAYUS}
+          rightLinks={<AnonymousHeaderLinks />}
           {...rest}
         />
         <div
@@ -113,7 +128,7 @@ class RegisterPage extends React.Component {
             <GridContainer justify="center">
               <GridItem xs={12} sm={12} md={4}>
                 <Card className={classes[this.state.cardAnimaton]}>
-                  <form className={classes.form}>
+                  <form className={classes.form} onSubmit={this.onSubmit}>
                     <CardHeader color="primary" className={classes.cardHeader}>
                       <h4>Registrate</h4>
                     </CardHeader>
@@ -121,7 +136,7 @@ class RegisterPage extends React.Component {
                       <CustomInput
                         formControlProps={{
                           fullWidth: true,
-                          className: classes.customFormControlClasses
+                          className: classes.customInput
                         }}
                         inputProps={{
                           startAdornment: (
@@ -132,13 +147,16 @@ class RegisterPage extends React.Component {
                               <Face className={classes.inputAdornmentIcon} />
                             </InputAdornment>
                           ),
-                          placeholder: "Nombre"
+                          placeholder: "Nombre",
+                          value: username,
+                          onChange: event =>
+                            this.setState(byPropKey("username", event.target.value))
                         }}
                       />
                       <CustomInput
                         formControlProps={{
                           fullWidth: true,
-                          className: classes.customFormControlClasses
+                          className: classes.customInput
                         }}
                         inputProps={{
                           startAdornment: (
@@ -149,13 +167,16 @@ class RegisterPage extends React.Component {
                               <Email className={classes.inputAdornmentIcon} />
                             </InputAdornment>
                           ),
-                          placeholder: "Correo electrónico"
+                          placeholder: "Correo electrónico",
+                          value: email,
+                          onChange: event =>
+                            this.setState(byPropKey("email", event.target.value))
                         }}
                       />
                       <CustomInput
                         formControlProps={{
                           fullWidth: true,
-                          className: classes.customFormControlClasses
+                          className: classes.customInput
                         }}
                         inputProps={{
                           startAdornment: (
@@ -169,13 +190,16 @@ class RegisterPage extends React.Component {
                             </InputAdornment>
                           ),
                           placeholder: "Contraseña",
+                          value: passwordOne,
+                          onChange: event =>
+                            this.setState(byPropKey("passwordOne", event.target.value)),
                           type: "password"
                         }}
                       />
                       <CustomInput
                         formControlProps={{
                           fullWidth: true,
-                          className: classes.customFormControlClasses
+                          className: classes.customInput
                         }}
                         inputProps={{
                           startAdornment: (
@@ -189,6 +213,9 @@ class RegisterPage extends React.Component {
                             </InputAdornment>
                           ),
                           placeholder: "Confirmar Contraseña",
+                          value: passwordTwo,
+                          onChange: event =>
+                            this.setState(byPropKey("passwordTwo", event.target.value)),
                           type: "password"
                         }}
                       />
@@ -220,7 +247,9 @@ class RegisterPage extends React.Component {
                     </CardBody>
                     <CardFooter className={classes.cardFooter}>
                       <div className={classes.center}>
-                        <Button round color="primary">
+                        <Button round color="primary" disabled={isValid}
+                        type="submit"
+                        onClick={this.onSubmit}>
                           Aceptar
                         </Button>
                       </div>
@@ -236,7 +265,6 @@ class RegisterPage extends React.Component {
               </GridItem>
             </GridContainer>
           </div>
-          <Footer whiteFont />
         </div>
       </div>
     );

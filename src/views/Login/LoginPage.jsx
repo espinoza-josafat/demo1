@@ -8,7 +8,7 @@ import Icon from "@material-ui/core/Icon";
 import Email from "@material-ui/icons/Email";
 // core components
 import Header from "../../components/Header/LandingHeader.jsx";
-import HeaderLinks from "../../components/Header/LandingHeaderLinks.jsx";
+import AnonymousHeaderLinks from "../../components/Header/AnonymousHeaderLinks.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
 import GridContainer from "../../components/Grid/GridContainer.jsx";
 import GridItem from "../../components/Grid/GridItem.jsx";
@@ -90,8 +90,8 @@ class LoginPage extends React.Component {
         <Header
           absolute
           color="transparent"
-          brand={strings.PROJECT}
-          rightLinks={<HeaderLinks />}
+          brand={strings.PROJECT_MAYUS}
+          rightLinks={<AnonymousHeaderLinks />}
           {...rest}
         />
         <div

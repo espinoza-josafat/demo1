@@ -85,6 +85,9 @@ const registerPageStyle = {
   },
   inputIconsColor: {
     color: "#495057"
+  },
+  customInput: {
+    marginTop: "0"
   }
 };
 
