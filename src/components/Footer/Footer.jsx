@@ -29,10 +29,7 @@ class Footer extends React.Component {
           </div>
           <p className={classes.right}>
             <span>
-              &copy; {1900 + new Date().getYear()}{" "}
-              <Link to="https://www.google.com.mx" className={classes.a}>
-                {strings.PROJECT}
-              </Link>
+              &copy; {1900 + new Date().getYear()}{" "} {strings.PROJECT}
             </span>
           </p>
         </div>

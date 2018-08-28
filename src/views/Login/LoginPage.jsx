@@ -9,7 +9,6 @@ import Email from "@material-ui/icons/Email";
 // core components
 import Header from "../../components/Header/LandingHeader.jsx";
 import AnonymousHeaderLinks from "../../components/Header/AnonymousHeaderLinks.jsx";
-import Footer from "../../components/Footer/Footer.jsx";
 import GridContainer from "../../components/Grid/GridContainer.jsx";
 import GridItem from "../../components/Grid/GridItem.jsx";
 import Button from "../../components/CustomButtons/Button.jsx";
@@ -22,10 +21,7 @@ import CustomInput from "../../components/CustomInput/CustomInput.jsx";
 import * as strings from "../../application/constants/strings.js";
 import * as routes from "../../application/constants/routes";
 
-//import { history } from "history";
-
 import * as fb from "firebase";
-import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { auth } from "../../firebase/index";
 import * as users from "../../bussiness/users";
 
@@ -48,21 +44,13 @@ const INITIAL_STATE = {
 class LoginPage extends React.Component {
   constructor(props) {
     super(props);
-    // we use this to make the card to appear after the page has been rendered
+    
     this.state = {
-      cardAnimaton: "cardHidden",
       ...INITIAL_STATE
     };
-  }
 
-  componentDidMount() {
-    // we add a hidden class to the card and after 700 ms we delete it and the transition appears
-    setTimeout(
-      function() {
-        this.setState({ cardAnimaton: "" });
-      }.bind(this),
-      700
-    );
+    this.loginWithFacebook = this.loginWithFacebook.bind(this);
+    this.loginWithGmail = this.loginWithGmail.bind(this);
   }
 
   onSubmit = event => {
@@ -81,7 +69,60 @@ class LoginPage extends React.Component {
       });
 
     event.preventDefault();
-  };
+  }
+
+  loginWithFacebook = event => {
+    let that = this;
+    const { history } = that.props;
+
+    var provider = new fb.auth.FacebookAuthProvider();
+
+    auth.doSignInWithPopup(provider).then(function(authResult) {
+      users
+      .doCreateUser(
+        authResult.user.uid,
+        authResult.user.displayName,
+        authResult.user.email
+      )
+      .then(() => {
+        that.setState({ ...INITIAL_STATE });
+        history.push(routes.DASHBOARD);
+      })
+      .catch(error => {
+        that.setState(byPropKey("error", error));
+      });
+    })
+    .catch(error => {
+      that.setState(byPropKey("error", error));
+    });
+  }
+
+  loginWithGmail = event => {
+    let that = this;
+
+    const { history } = that.props;
+
+    var provider = new fb.auth.GoogleAuthProvider();
+
+    auth.doSignInWithPopup(provider).then(function(authResult) {
+      users
+      .doCreateUser(
+        authResult.user.uid,
+        authResult.user.displayName,
+        authResult.user.email
+      )
+      .then(() => {
+        that.setState({ ...INITIAL_STATE });
+        history.push(routes.DASHBOARD);
+      })
+      .catch(error => {
+        that.setState(byPropKey("error", error));
+      });
+    })
+    .catch(error => {
+      that.setState(byPropKey("error", error));
+    });
+  }
 
   render() {
     const { email, password, error } = this.state;
@@ -109,7 +150,7 @@ class LoginPage extends React.Component {
         >
           <div className={classes.container}>
             <GridContainer justify="center">
-              <GridItem xs={12} sm={12} md={4}>
+              <GridItem xs={12} sm={12} md={5}>
                 <Card className={classes[this.state.cardAnimaton]}>
                   <form className={classes.form}>
                     <CardHeader color="primary" className={classes.cardHeader}>
@@ -118,14 +159,14 @@ class LoginPage extends React.Component {
                         <Button
                           justIcon
                           color="transparent"
-                          onClick={e => e.preventDefault()}
+                          onClick={this.loginWithFacebook}
                         >
                           <i className={"fab fa-facebook"} />
                         </Button>
                         <Button
                           justIcon
                           color="transparent"
-                          onClick={e => e.preventDefault()}
+                          onClick={this.loginWithGmail}
                         >
                           <i className={"fab fa-google-plus-g"} />
                         </Button>
@@ -202,8 +243,6 @@ class LoginPage extends React.Component {
               </GridItem>
             </GridContainer>
           </div>
-          <StyledFirebaseAuthForm history={this.props.history} />
-          <Footer whiteFont />
         </div>
       </div>
     );
@@ -238,47 +277,6 @@ class PasswordForgetLink extends React.Component {
       <p style={stylePasswordForgetLink}>
         <Link to={routes.PASSWORD_FORGET}>¿Olvidaste tu contraseña?</Link>
       </p>
-    );
-  }
-}
-
-class StyledFirebaseAuthForm extends React.Component {
-  uiConfig = {
-    signInFlow: "popup",
-    signInOptions: [
-      fb.auth.GoogleAuthProvider.PROVIDER_ID,
-      fb.auth.FacebookAuthProvider.PROVIDER_ID
-    ],
-    callbacks: {
-      signInSuccessWithAuthResult: (authResult, redirectUrl) => {
-        //console.log("authResult", authResult);
-
-        users
-          .doCreateUser(
-            authResult.user.uid,
-            authResult.user.displayName,
-            authResult.user.email
-          )
-          .then(() => {
-            this.onSubmit();
-          })
-          .catch(error => {
-            this.setState(byPropKey("error", error));
-          });
-
-        return false;
-      }
-    }
-  };
-
-  onSubmit = () => {
-    const { history } = this.props;
-    history.push(routes.DASHBOARD);
-  };
-
-  render() {
-    return (
-      <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={fb.auth()} />
     );
   }
 }
