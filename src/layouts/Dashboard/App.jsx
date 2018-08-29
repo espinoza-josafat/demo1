@@ -16,7 +16,7 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 
 import dashboardRoutes from "../../routes/dashboard";
 
-import dashboardStyle from "../../assets/jss/material-dashboard-pro-react/layouts/dashboardStyle.jsx";
+import dashboardStyle from "../../assets/jss/material-dashboard-pro-react/layouts/dashboardStyle";
 
 import image from "../../assets/img/sidebar-2.jpg";
 import logo from "../../assets/img/logo-white.svg";
