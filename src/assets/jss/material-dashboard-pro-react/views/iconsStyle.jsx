@@ -2,7 +2,7 @@
 // // // Icons styles
 // #############################
 
-import { boxShadow } from "assets/jss/material-dashboard-pro-react.jsx";
+import { boxShadow } from "../../../../assets/jss/material-dashboard-pro-react";
 
 const iconsStyle = {
   iframe: {

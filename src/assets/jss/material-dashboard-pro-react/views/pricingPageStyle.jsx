@@ -7,7 +7,7 @@ import {
   defaultFont,
   cardTitle,
   roseColor
-} from "assets/jss/material-dashboard-pro-react.jsx";
+} from "../../../../assets/jss/material-dashboard-pro-react";
 
 const pricingPageStyle = theme => ({
   container: {
@@ -15,7 +15,7 @@ const pricingPageStyle = theme => ({
     zIndex: "4",
     [theme.breakpoints.down("sm")]: {
       paddingBottom: "100px"
-    },
+    }
   },
   title: {
     ...defaultFont,

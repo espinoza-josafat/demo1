@@ -7,11 +7,11 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 
 // core components
-import Button from "../../components/CustomButtons/Button.jsx";
+import Button from "../../components/CustomButtons/Button";
 
 import * as routes from "../../application/constants/routes";
 
-import headerLinksStyle from "../../assets/jss/material-kit-react/components/headerLinksStyle.jsx";
+import headerLinksStyle from "../../assets/jss/material-kit-react/components/headerLinksStyle";
 
 function AnonymousHeaderLinks({ ...props }) {
   const { classes } = props;

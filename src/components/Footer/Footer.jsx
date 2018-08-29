@@ -11,7 +11,7 @@ import ListItem from "@material-ui/core/ListItem";
 import * as strings from "../../application/constants/strings";
 import * as routes from "../../application/constants/routes";
 
-import footerStyle from "assets/jss/material-dashboard-pro-react/components/footerStyle";
+import footerStyle from "../../assets/jss/material-dashboard-pro-react/components/footerStyle";
 
 function Footer({ ...props }) {
   const { classes, fluid, white, rtlActive } = props;
@@ -42,7 +42,7 @@ function Footer({ ...props }) {
           </List>
         </div>
         <p className={classes.right}>
-          &copy; {1900 + new Date().getYear()}{" "} {strings.PROJECT}
+          &copy; {1900 + new Date().getYear()} {strings.PROJECT}
         </p>
       </div>
     </footer>

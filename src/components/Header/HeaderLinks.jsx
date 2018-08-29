@@ -15,7 +15,7 @@ import Poppers from "@material-ui/core/Popper";
 import Person from "@material-ui/icons/Person";
 
 // core components
-import Button from "../../components/CustomButtons/Button.jsx";
+import Button from "../../components/CustomButtons/Button";
 
 import headerLinksStyle from "../../assets/jss/material-dashboard-pro-react/components/headerLinksStyle";
 
@@ -110,8 +110,6 @@ class HeaderLinks extends React.Component {
 }
 
 export default withStyles(headerLinksStyle)(HeaderLinks);
-
-
 
 /*import React from "react";
 import classNames from "classnames";

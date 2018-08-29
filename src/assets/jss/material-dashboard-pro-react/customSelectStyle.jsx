@@ -1,7 +1,7 @@
 import {
   primaryColor,
   primaryBoxShadow
-} from "assets/jss/material-dashboard-pro-react.jsx";
+} from "../../../assets/jss/material-dashboard-pro-react.jsx";
 
 const customSelectStyle = {
   select: {
@@ -61,7 +61,7 @@ const customSelectStyle = {
       backgroundColor: "inherit"
     },
     "& > div + div": {
-      maxHeight: "266px !important",
+      maxHeight: "266px !important"
     }
   },
   selectMenuItem: {

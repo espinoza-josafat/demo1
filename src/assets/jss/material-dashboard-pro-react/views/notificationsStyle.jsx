@@ -2,8 +2,8 @@
 // // // Notifications view styles
 // #############################
 
-import { defaultFont } from "assets/jss/material-dashboard-pro-react.jsx";
-import modalStyle from "assets/jss/material-dashboard-pro-react/modalStyle.jsx";
+import { defaultFont } from "../../../../assets/jss/material-dashboard-pro-react";
+import modalStyle from "../../../../assets/jss/material-dashboard-pro-react/modalStyle";
 
 const notificationsStyle = theme => ({
   cardTitle: {

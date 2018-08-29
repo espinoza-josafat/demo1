@@ -7,7 +7,7 @@ import {
   container,
   containerFluid,
   primaryColor
-} from "assets/jss/material-dashboard-pro-react.jsx";
+} from "../../../../assets/jss/material-dashboard-pro-react";
 
 const footerStyle = {
   block: {},

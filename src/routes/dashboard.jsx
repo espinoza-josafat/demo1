@@ -1,4 +1,4 @@
-import HomePage from "views/Home/HomePage";
+import HomePage from "../views/Home/HomePage";
 
 import Dashboard from "@material-ui/icons/Dashboard";
 

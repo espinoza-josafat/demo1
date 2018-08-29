@@ -5,7 +5,7 @@
 import {
   cardTitle,
   container
-} from "assets/jss/material-dashboard-pro-react.jsx";
+} from "../../../../assets/jss/material-dashboard-pro-react";
 
 const lockScreenPageStyle = theme => ({
   cardTitle,
@@ -14,7 +14,7 @@ const lockScreenPageStyle = theme => ({
     zIndex: "4",
     [theme.breakpoints.down("sm")]: {
       paddingBottom: "100px"
-    },
+    }
   },
   customCardClass: {
     width: "240px",

@@ -9,7 +9,7 @@ import {
   successColor,
   warningColor,
   dangerColor
-} from "assets/jss/material-dashboard-pro-react.jsx";
+} from "../../../../assets/jss/material-dashboard-pro-react";
 
 const typographyStyle = {
   defaultFontStyle: {

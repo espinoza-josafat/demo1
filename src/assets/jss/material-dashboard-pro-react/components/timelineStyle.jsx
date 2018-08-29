@@ -8,7 +8,7 @@ import {
   successColor,
   dangerColor,
   warningColor
-} from "assets/jss/material-dashboard-pro-react.jsx";
+} from "../../../../assets/jss/material-dashboard-pro-react";
 const timelineStyle = theme => ({
   timeline: {
     [theme.breakpoints.down("sm")]: {

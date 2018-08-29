@@ -17,11 +17,11 @@ import Collapse from "@material-ui/core/Collapse";
 import Icon from "@material-ui/core/Icon";
 
 // core components
-import HeaderLinks from "components/Header/HeaderLinks.jsx";
+import HeaderLinks from "../../components/Header/HeaderLinks";
 
-import sidebarStyle from "assets/jss/material-dashboard-pro-react/components/sidebarStyle.jsx";
+import sidebarStyle from "../../assets/jss/material-dashboard-pro-react/components/sidebarStyle";
 
-import avatar from "assets/img/faces/avatar.jpg";
+import avatar from "../../assets/img/faces/avatar.jpg";
 
 var ps;
 

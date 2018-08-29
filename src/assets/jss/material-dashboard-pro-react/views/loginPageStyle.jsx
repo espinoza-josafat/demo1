@@ -5,7 +5,7 @@
 import {
   container,
   cardTitle
-} from "assets/jss/material-dashboard-pro-react.jsx";
+} from "../../../../assets/jss/material-dashboard-pro-react";
 
 const loginPageStyle = theme => ({
   container: {
@@ -13,7 +13,7 @@ const loginPageStyle = theme => ({
     zIndex: "4",
     [theme.breakpoints.down("sm")]: {
       paddingBottom: "100px"
-    },
+    }
   },
   cardTitle: {
     ...cardTitle,

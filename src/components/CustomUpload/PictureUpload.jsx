@@ -1,6 +1,6 @@
 import React from "react";
 
-import defaultImage from "assets/img/default-avatar.png";
+import defaultImage from "../../assets/img/default-avatar.png";
 
 class PictureUpload extends React.Component {
   constructor(props) {

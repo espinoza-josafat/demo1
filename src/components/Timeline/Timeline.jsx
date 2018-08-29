@@ -6,9 +6,9 @@ import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 // core components
-import Badge from "components/Badge/Badge.jsx";
+import Badge from "../../components/Badge/Badge";
 
-import timelineStyle from "assets/jss/material-dashboard-pro-react/components/timelineStyle.jsx";
+import timelineStyle from "../../assets/jss/material-dashboard-pro-react/components/timelineStyle";
 
 function Timeline({ ...props }) {
   const { classes, stories, simple } = props;

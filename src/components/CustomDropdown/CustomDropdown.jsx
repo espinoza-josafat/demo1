@@ -15,9 +15,9 @@ import Divider from "@material-ui/core/Divider";
 import Popper from "@material-ui/core/Popper";
 
 // core components
-import Button from "components/CustomButtons/Button.jsx";
+import Button from "../../components/CustomButtons/Button";
 
-import customDropdownStyle from "assets/jss/material-dashboard-pro-react/components/customDropdownStyle.jsx";
+import customDropdownStyle from "../../assets/jss/material-dashboard-pro-react/components/customDropdownStyle";
 
 class CustomDropdown extends React.Component {
   constructor(props) {
@@ -90,8 +90,12 @@ class CustomDropdown extends React.Component {
           disablePortal
           placement={
             dropup
-              ? left ? "top-start" : "top"
-              : left ? "bottom-start" : "bottom"
+              ? left
+                ? "top-start"
+                : "top"
+              : left
+                ? "bottom-start"
+                : "bottom"
           }
           className={classNames({
             [classes.popperClose]: !open,

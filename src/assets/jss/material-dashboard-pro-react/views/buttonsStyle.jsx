@@ -2,7 +2,7 @@
 // // // Buttons view styles
 // #############################
 
-import buttonGroupStyle from "assets/jss/material-dashboard-pro-react/buttonGroupStyle.jsx";
+import buttonGroupStyle from "../../../../assets/jss/material-dashboard-pro-react/buttonGroupStyle";
 
 const buttonsStyle = {
   cardTitle: {

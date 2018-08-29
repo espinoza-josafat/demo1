@@ -2,7 +2,7 @@ import {
   defaultFont,
   primaryColor,
   primaryBoxShadow
-} from "assets/jss/material-dashboard-pro-react.jsx";
+} from "../../../../assets/jss/material-dashboard-pro-react";
 
 const customDropdownStyle = theme => ({
   popperClose: {
