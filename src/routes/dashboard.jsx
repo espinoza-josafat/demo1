@@ -1,6 +1,12 @@
+// @material-ui/icons
+import Dashboard from "@material-ui/icons/Dashboard";
+import Class from "@material-ui/icons/Class";
+
+// core components/views
+import MisAulasPage from "../views/MisAulas/MisAulasPage";
 import HomePage from "../views/Home/HomePage";
 
-import Dashboard from "@material-ui/icons/Dashboard";
+import * as routes from "../application/constants/routes";
 
 /*import Buttons from "views/Components/Buttons.jsx";
 import GridSystem from "views/Components/GridSystem.jsx";
@@ -62,14 +68,27 @@ import UpgradeToPro from "../views/UpgradeToPro/UpgradeToPro.jsx";
 import * as routes from "../application/constants/routes";
 */
 
-import * as routes from "../application/constants/routes";
-
 const dashboardRoutes = [
   {
     path: routes.D_HOME,
     name: "Dashboard",
     icon: Dashboard,
     component: HomePage
+  },
+  {
+    collapse: true,
+    path: "/dashboard/aulas",
+    name: "Aulas",
+    state: "openAulas",
+    icon: Class,
+    views: [
+      {
+        path: "/dashboard/aulas/mis-aulas",
+        name: "Mis Aulas",
+        mini: "MA",
+        component: MisAulasPage
+      }
+    ]
   },
   {
     redirect: true,
