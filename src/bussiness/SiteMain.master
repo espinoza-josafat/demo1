@@ -1,0 +1,333 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="SiteMain.master.cs" Inherits="SiteMain" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!--[if IE 8]> <html lang="es" class="ie8 no-js"><![endif]-->
+<!--[if IE 9]> <html lang="es" class="ie9 no-js"><![endif]-->
+<!--[if !IE]><!-->
+<html lang="es">
+<!--<![endif]-->
+
+<!-- Head BEGIN -->
+<head runat="server">
+    <meta charset="utf-8">
+    <title>Restaurant Net</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <meta content="Shop UI description" name="description">
+    <meta content="Shop UI keywords" name="keywords">
+    <meta content="dsoft" name="DynamicSoft">
+
+    <meta property="og:site_name" content="-CUSTOMER VALUE-">
+    <meta property="og:title" content="-CUSTOMER VALUE-">
+    <meta property="og:description" content="-CUSTOMER VALUE-">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="-CUSTOMER VALUE-">
+    <!-- link to image for socio -->
+    <meta property="og:url" content="-CUSTOMER VALUE-">
+
+    <link rel="shortcut icon" href="RestPOS3.ico" />
+
+
+
+    <!-- Global styles START -->
+    <link href="fonts/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="globalRes/ltr/bootstrap.min.css" rel="stylesheet" />
+    <!-- Global styles END -->
+
+    <!-- Page level plugin styles START -->
+    <link href="globalRes/jquery.fancybox.css" rel="stylesheet" />
+    <!-- Page level plugin styles END -->
+
+
+    <!-- Theme styles START  to change to RTL just remove /ltr dir-->
+    <link href="globalRes/ltr/components.css" rel="stylesheet" />
+    <link href="globalRes/ltr/style.css" rel="stylesheet" />
+    <link href="globalRes/ltr/style-responsive.css" rel="stylesheet" />
+    <link href="globalRes/orange.css" rel="stylesheet" />
+    <link href="globalRes/ltr/custom.css" rel="stylesheet" />
+    <link href="globalRes/modal.css" rel="stylesheet" type="text/css" />
+    <!-- Theme styles END -->
+
+</head>
+<!-- Head END -->
+
+<!-- Body BEGIN -->
+<body class="corporate">
+    <form id="form1" runat="server">
+        <%--    
+            <!-- BEGIN STYLE CUSTOMIZER -->
+                <div class="color-panel hidden-sm">
+                  <div class="color-mode-icons icon-color"></div>
+                  <div class="color-mode-icons icon-color-close"></div>
+                  <div class="color-mode">
+                    <p>THEME COLOR</p>
+                    <ul class="inline">
+                      <li class="color-red current color-default" data-style="red"></li>
+                      <li class="color-blue" data-style="blue"></li>
+                      <li class="color-green" data-style="green"></li>
+                      <li class="color-orange" data-style="orange"></li>
+                      <li class="color-gray" data-style="gray"></li>
+                      <li class="color-turquoise" data-style="turquoise"></li>
+                    </ul>
+                  </div>
+                </div>
+            <!-- END BEGIN STYLE CUSTOMIZER --> 
+        --%>
+
+        <!-- BEGIN TOP BAR -->
+        <div class="pre-header" style="background-color: #3368ff; color: white;">
+            <div class="container">
+                <div class="row">
+                    <!-- BEGIN TOP BAR LEFT PART -->
+                    <div class="col-md-6 col-sm-6 additional-shop-info">
+                        <ul class="list-unstyled list-inline">
+                            <li><i class="fa fa-phone"></i><span>+1 234 456 8984</span></li>
+                            <li><i class="fa fa-envelope-o"></i><span>citkar@live.com</span></li>
+                        </ul>
+                    </div>
+                    <!-- END TOP BAR LEFT PART -->
+                    <!-- BEGIN TOP BAR MENU -->
+                    <div class="col-md-6 col-sm-6 additional-nav">
+                        <ul class="list-unstyled list-inline pull-right">
+                            <%-- <li><a href="../LoginCustomer.aspx" style="color:white;">Log In</a></li>
+                        <li><a href="../Customer_Registration.aspx" style="color:white;" >Sign-up</a></li>--%>
+                        </ul>
+                    </div>
+                    <!-- END TOP BAR MENU -->
+                </div>
+            </div>
+        </div>
+        <!-- END TOP BAR -->
+
+        <!-- BEGIN HEADER -->
+        <div class="header">
+            <div class="container">
+                <a class="site-logo" href="Default.aspx">
+                    <img src="RestPOS3.ico" width="30px" height="30px" alt="Rest POS">
+                    My Restaurant</a>
+
+                <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+
+                <!-- BEGIN NAVIGATION -->
+                <div class="header-navigation pull-right font-transform-inherit">
+                    <ul>
+                        <li class="#active"><a href="Default.aspx">Home</a></li>
+                        <li class="dropdown dropdown-megamenu">
+                            <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">Mega Menu
+                
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div class="header-navigation-content">
+                                        <div class="row">
+                                            <div class="col-md-4 header-navigation-col">
+                                                <h4>Drinks</h4>
+                                                <ul>
+                                                    <li><a href="#">Soft Drinks</a></li>
+                                                    <li><a href="#">Cool drinks </a></li>
+                                                    <li><a href="#">Juice</a></li>
+                                                    <li><a href="#">Cocktel</a></li>
+                                                    <li><a href="#">Coffe</a></li>
+                                                    <li><a href="#">G </a></li>
+                                                    <li><a href="#">H </a></li>
+                                                    <li><a href="#">M</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-4 header-navigation-col">
+                                                <h4>Dinner</h4>
+                                                <ul>
+                                                    <li><a href="#">Rice</a></li>
+                                                    <li><a href="#">Rice shrimp</a></li>
+                                                    <li><a href="#">Fried Checken</a></li>
+                                                    <li><a href="#">Checken Rice</a></li>
+                                                    <li><a href="#">Fried beef</a></li>
+                                                    <li><a href="#">Shrimp</a></li>
+                                                    <li><a href="#">Bread Beef</a></li>
+                                                    <li><a href="#">Rice voona</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-4 header-navigation-col">
+                                                <h4>Lunch</h4>
+                                                <ul>
+                                                    <li><a href="#">Rice</a></li>
+                                                    <li><a href="#">Rice shrimp</a></li>
+                                                    <li><a href="#">Fried Checken</a></li>
+                                                    <li><a href="#">Checken Rice</a></li>
+                                                </ul>
+
+                                                <h4>Breakfast</h4>
+                                                <ul>
+                                                    <li><a href="#">Bread</a></li>
+                                                    <li><a href="#">snack</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">Features 
+                
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li><a href="#">links-1</a></li>
+                                <li><a href="#">links-2</a></li>
+                                <li><a href="#">links-3</a></li>
+
+                                <li class="dropdown-submenu">
+                                    <a href="#">Multi level <i class="fa fa-angle-right"></i></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">links-1</a></li>
+                                        <li><a href="#">links-2</a></li>
+
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="About.aspx">About Us</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="Contact.aspx">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- END NAVIGATION -->
+            </div>
+        </div>
+        <!-- Header END -->
+
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
+        <div class="main">
+            <div class="container">
+                <!-- BEGIN SIDEBAR & CONTENT -->
+                <div class="row margin-bottom-40">
+                    <!-- BEGIN CONTENT -->
+                    <div class="col-md-12 col-sm-12">
+                        <div class="content-page ">
+                            <asp:UpdateProgress ID="UpdateProgress1" runat="server">
+                                <ProgressTemplate>
+                                    <div style="position: relative; top: 30%; text-align: center;">
+                                        <asp:Image ID="Image1" runat="server" Style="vertical-align: middle"
+                                            alt="Cargando..." ImageUrl="~/Content/input-spinner.gif" />
+                                    </div>
+                                </ProgressTemplate>
+                            </asp:UpdateProgress>
+
+                            <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+                                <ContentTemplate>
+                                    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                                    </asp:ContentPlaceHolder>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </div>
+                    </div>
+                    <!-- END CONTENT -->
+                </div>
+                <!-- END SIDEBAR & CONTENT -->
+            </div>
+        </div>
+
+        <!-- BEGIN PRE-FOOTER -->
+        <div class="pre-footer">
+            <div class="container">
+                <div class="row">
+                    <!-- BEGIN BOTTOM ABOUT BLOCK -->
+                    <div class="col-md-4 col-sm-6 pre-footer-col">
+                        <h2>About us</h2>
+                        <p>
+                            Restaurant Point of Sale - Rest POS - C# WPF SQL - WEB (Customer Order Request)
+Restaurant POS is C#, WPF , XAML, SQL based Desktop application. On-Screen Touch Keyboard support. Seller can select first table zone and place order Kitchen display shows Kitchen items. 
+                        </p>
+
+
+                    </div>
+                    <!-- END BOTTOM ABOUT BLOCK -->
+
+                    <!-- BEGIN BOTTOM CONTACTS -->
+                    <div class="col-md-4 col-sm-6 pre-footer-col">
+                        <h2>Our Contacts</h2>
+                        <address class="margin-bottom-40">
+                            Rue hutchison<br>
+                            Montreal,QC CANADA<br>
+                            Phone:+001 514 777 2335
+                            <br>
+                            Email: <a href="mailto:info@citputer.com">citkar@live.com</a>
+                        </address>
+
+                    </div>
+                    <!-- END BOTTOM CONTACTS -->
+
+                    <!-- BEGIN TWITTER BLOCK -->
+                    <div class="col-md-4 col-sm-6 pre-footer-col">
+                        <h2 class="margin-bottom-0">Latest Tweets</h2>
+                        <%--  <a class="twitter-timeline" data-height="301" data-theme="dark" href="https://twitter.com/citkar?ref_src=twsrc%5Etfw">Tweets by citkar</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --%>
+                    </div>
+                    <!-- END TWITTER BLOCK -->
+                </div>
+            </div>
+        </div>
+        <!-- END PRE-FOOTER -->
+
+        <!-- BEGIN FOOTER -->
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <!-- BEGIN COPYRIGHT -->
+                    <div class="col-md-6 col-sm-6 padding-top-10">
+                        <%=DateTime.Now.Year%> &copy; Developed by DynamicSoft. ALL Rights Reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                    </div>
+                    <!-- END COPYRIGHT -->
+                    <!-- BEGIN PAYMENTS -->
+                    <div class="col-md-6 col-sm-6">
+                        <ul class="social-footer list-unstyled list-inline pull-right">
+                            <li><a href="https://www.facebook.com/citputer"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="javascript:;"><i class="fa fa-dribbble"></i></a></li>
+                            <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="javascript:;"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="javascript:;"><i class="fa fa-skype"></i></a></li>
+                            <li><a href="javascript:;"><i class="fa fa-github"></i></a></li>
+                            <li><a href="https://www.youtube.com/c/dynamicsoft"><i class="fa fa-youtube"></i></a></li>
+                            <li><a href="javascript:;"><i class="fa fa-dropbox"></i></a></li>
+                        </ul>
+                    </div>
+                    <!-- END PAYMENTS -->
+                </div>
+            </div>
+        </div>
+        <!-- END FOOTER -->
+
+
+        <!-- Load javascripts at bottom, this will reduce page load time -->
+        <!-- BEGIN CORE PLUGINS (REQUIRED FOR ALL PAGES) -->
+        <!--[if lt IE 9]>     
+            <script src="assets/global/scripts/respond.min.js"></script>
+        <![endif]-->
+        <script type="text/javascript" src="globalRes/js/jquery.min.js"></script>
+        <script type="text/javascript" src="globalRes/js/jquery-migrate.min.js"></script>
+        <script type="text/javascript" src="globalRes/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="globalRes/js/back-to-top.js"></script>
+
+        <!-- END CORE PLUGINS -->
+
+        <!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
+        <script type="text/javascript" src="globalRes/js/jquery.fancybox.pack.js"></script>
+        <script type="text/javascript" src="globalRes/js/layout.js"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function () {
+                //  Metronic.init(); // init metronic core components
+                Layout.init(); // init current layout
+                Layout.initTwitter();
+                //    Demo.init(); // init demo features
+            });
+        </script>
+    </form>
+</body>
+<!-- END BODY -->
+</html>
